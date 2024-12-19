@@ -24,11 +24,11 @@ for unit in Unit_test/unit_*; do
         gcc driver.c -o driver
 
         # Run the driver
-        statusAndTime=$(./driver $unit_id $variation)
+        status_and_time=$(./driver $unit_id $variation)
 
         # Append the result to the CSV file
-        echo "$test_no, $unit_id, $variation, $statusAndTime" >> $output_file
-        echo "$test_no, $unit_id, $variation, $statusAndTime"
+        echo "$test_no, $unit_id, $variation, $status_and_time" >> $output_file
+        echo "$test_no, $unit_id, $variation, $status_and_time"
 
         test_no=$((test_no + 1))
     done
