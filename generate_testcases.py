@@ -18,7 +18,7 @@ def generate_matrices(size, folder):
     save_matrix_with_dimensions(f"{folder}/B.txt", B)
     save_matrix_with_dimensions(f"{folder}/C.txt", C)
 
-for size, unit in zip(range(100, 501, 20), range(1, 21)):
+for size, unit in zip(range(700, 701), range(21, 22)):
     folder = f"Unit_test/unit_{unit}"
     os.makedirs(folder, exist_ok=True)  
     generate_matrices(size, folder)

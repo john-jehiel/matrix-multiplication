@@ -1,23 +1,38 @@
 #!/bin/bash
 
+# Output file for results
 output_file="Results/time_report.csv"
 
-echo "Test_No, Status, Time_Taken(ms)" > $output_file
+# Header for the CSV file
+echo "Test_No, Unit_Id, Variation, Status, Time_Taken(ms)" > $output_file
 
+# Variations of matrix multiplication
+variations=("ijk" "ikj" "jik" "jki" "kij" "kji")
+
+# Initialize test counter
 test_no=1
 
+# Iterate over each test case
 for unit in Unit_test/unit_*; do
+    # Extract the unit number
     unit_id=$(basename $unit | cut -d'_' -f2)
-    
-    start=$(date +%s%3N)
-    
-    status=$(./driver $unit_id)
 
-    end=$(date +%s%3N)
-    time_taken=$((end - start))
+    # Run each variation
+    for variation in "${variations[@]}"; do
 
-    echo "$test_no, $status, $time_taken" >> $output_file
-    test_no=$((test_no + 1))
+        # Compile the driver with the corresponding variation
+        gcc driver.c -o driver
+
+        # Run the driver
+        statusAndTime=$(./driver $unit_id $variation)
+
+        # Append the result to the CSV file
+        echo "$test_no, $unit_id, $variation, $statusAndTime" >> $output_file
+        echo "$test_no, $unit_id, $variation, $statusAndTime"
+
+        test_no=$((test_no + 1))
+    done
+    echo "" >> $output_file
 done
 
 echo "Time report generated in $output_file"

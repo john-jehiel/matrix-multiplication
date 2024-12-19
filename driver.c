@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <time.h>
 #include "matmul.c"
 
 void read_matrix(const char *filename, int ***matrix, int *rows, int *cols) {
@@ -56,17 +58,47 @@ int main(int argc, char *argv[]) {
 
     // yet to add mismatches between dimensions of matrices
 
-    Result = malloc(m1 * sizeof(int *));
+    Result = calloc(m1, sizeof(int *));
     for (int i = 0; i < m1; i++) {
-        Result[i] = malloc(n2 * sizeof(int));
+        Result[i] = calloc(n2, sizeof(int));
     }
 
-    matrix_multiply_ijk(A, B, Result, m1, n2, m2);
+    char *variation = argv[2];
+    clock_t start_time;
+    clock_t end_time;
+    double time_taken;
 
+    // Call the appropriate matrix multiplication function based on the defined variation
+    if (strcmp(variation, "ijk") == 0) {
+        start_time = clock();
+        matrix_multiply_ijk(A, B, Result, m1, n2, m2);
+        end_time = clock(); 
+    } else if (strcmp(variation, "ikj") == 0) {
+        start_time = clock();
+        matrix_multiply_ikj(A, B, Result, m1, n2, m2);
+        end_time = clock(); 
+    } else if (strcmp(variation, "jik") == 0) {
+        start_time = clock();
+        matrix_multiply_jik(A, B, Result, m1, n2, m2);
+        end_time = clock(); 
+    } else if (strcmp(variation, "jki") == 0) {
+        start_time = clock();
+        matrix_multiply_jki(A, B, Result, m1, n2, m2);
+        end_time = clock(); 
+    } else if (strcmp(variation, "kij") == 0) {
+        start_time = clock();
+        matrix_multiply_kij(A, B, Result, m1, n2, m2);
+        end_time = clock(); 
+    } else if (strcmp(variation, "kji") == 0) {
+        start_time = clock();
+        matrix_multiply_kji(A, B, Result, m1, n2, m2);
+        end_time = clock(); 
+    }
+    time_taken = ((double)end_time - (double)start_time) / CLOCKS_PER_SEC * 1000;
     if (compare_matrices(Result, C, m1, n2)) {
-        printf("Passed!\n");
+        printf("Passed!,  %.3f ms\n", time_taken);
     } else {
-        printf("Failed!\n");
+        printf("Failed!, %.3f ms\n", time_taken);
     }
 
     for (int i = 0; i < m1; i++) free(A[i]);
