@@ -4,7 +4,7 @@
 output_file="Results/time_report.csv"
 
 # Header for the CSV file
-echo "Test_No, Unit_Id, Variation, Status, Time_Taken(ms)" > $output_file
+echo "Test_No, Unit_Id, Variation, Status, Time_Taken(ms), Remarks" > $output_file
 
 # Variations of matrix multiplication
 variations=("ijk" "ikj" "jik" "jki" "kij" "kji")
@@ -24,11 +24,11 @@ for unit in Unit_test/unit_*; do
         gcc driver.c -o driver
 
         # Run the driver
-        status_and_time=$(./driver $unit_id $variation)
+        status_time_remarks=$(./driver $unit_id $variation)
 
         # Append the result to the CSV file
-        echo "$test_no, $unit_id, $variation, $status_and_time" >> $output_file
-        echo "$test_no, $unit_id, $variation, $status_and_time"
+        echo "$test_no, $unit_id, $variation, $status_time_remarks" >> $output_file
+        echo "$test_no, $unit_id, $variation, $status_time_remarks"
 
         test_no=$((test_no + 1))
     done

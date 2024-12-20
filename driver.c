@@ -2,23 +2,55 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <sys/stat.h>
 #include "matmul.c"
+#define MISC_ERROR 2
 
-void read_matrix(const char *filename, int ***matrix, int *rows, int *cols) {
+int is_file_empty(const char *filename) {
+    FILE *file = fopen(filename, "r");
+    if (file == NULL) {
+        perror("Error opening file");
+        return -1;
+    }
+    // Move to the end of the file
+    fseek(file, 0, SEEK_END);
+    long size = ftell(file); // Get the current position (size of the file)
+
+    fclose(file);
+
+    return size == 0; // Return 1 if empty, 0 if not
+}
+
+void handle_error(const char *error_message, int expected_status) {
+    if (expected_status == -1) {
+        printf("Passed!, , %s\n", error_message);
+    } else {
+        printf("Failed!, NA, %s\n", error_message);
+    }
+    exit(EXIT_SUCCESS);
+}
+
+void read_matrix(const char *filename, int ***matrix, int *rows, int *cols, int expected_status) {
     FILE *file = fopen(filename, "r");
     if (!file) {
-        perror("Error opening file");
-        exit(EXIT_FAILURE);
+        handle_error("File not found.", MISC_ERROR);
     }
 
-    fscanf(file, "%d", rows);
-    fscanf(file, "%d", cols);
+    if (fscanf(file, "%d\n%d", rows, cols) != 2) {
+        handle_error("Matrix dimensions are missing or invalid.", expected_status);
+    }
+
+    if (*rows <= 0 || *cols <= 0) {
+        handle_error("Matrix dimensions must be positive integers.", expected_status);
+    }
 
     *matrix = malloc((*rows) * sizeof(int *));
     for (int i = 0; i < *rows; i++) {
         (*matrix)[i] = malloc((*cols) * sizeof(int));
         for (int j = 0; j < *cols; j++) {
-            fscanf(file, "%d", &((*matrix)[i][j]));
+            if (fscanf(file, "%d", &((*matrix)[i][j])) != 1) {
+                handle_error("Matrix contains missing or invalid values.", expected_status);
+            }
         }
     }
 
@@ -36,30 +68,39 @@ int compare_matrices(int **matrix_1, int **matrix_2, int rows, int cols) {
     return 1;
 }
 
-int main(int argc, char *argv[]) {
 
+
+int main(int argc, char *argv[]) {
+    if (argc != 3) {
+        handle_error("command line arguments not found", MISC_ERROR);
+    }
     int A_row_size, A_col_size, B_row_size, B_col_size, C_row_size, C_col_size;
     int **A, **B, **C, **result;
 
     char filepath[256];
+    
+    sprintf(filepath, "Unit_test/unit_%s/C.txt", argv[1]);
+    int expected_status = (is_file_empty(filepath)) ? -1 : 1;
 
     sprintf(filepath, "Unit_test/unit_%s/A.txt", argv[1]);
-    read_matrix(filepath, &A, &A_row_size, &A_col_size);
+    read_matrix(filepath, &A, &A_row_size, &A_col_size, expected_status);
 
     sprintf(filepath, "Unit_test/unit_%s/B.txt", argv[1]);
-    read_matrix(filepath, &B, &B_row_size, &B_col_size);
+    read_matrix(filepath, &B, &B_row_size, &B_col_size, expected_status);
 
-    // Yet to add dimension checks for negative test cases
+    if (A_col_size != B_row_size) {
+        handle_error("Matrix dimensions are incompatible for multiplication.", expected_status);
+    }
 
     sprintf(filepath, "Unit_test/unit_%s/C.txt", argv[1]);
-    int status;
+    read_matrix(filepath, &C, &C_row_size, &C_col_size, expected_status);
 
-    read_matrix(filepath, &C, &C_row_size, &C_col_size);
-
-    // yet to add mismatches between dimensions of matrices
+    if (A_row_size != C_row_size || B_col_size != C_col_size) {
+        handle_error("Mismatch in Matrix dimensions.", expected_status);
+    }
 
     result = calloc(A_row_size, sizeof(int *));
-    for (int i = 0; i < A_row_size; i++) {
+    for (int i = 0; i < A_row_size; i++) {  
         result[i] = calloc(B_col_size, sizeof(int));
     }
 
@@ -93,7 +134,10 @@ int main(int argc, char *argv[]) {
         start_time = clock();
         matrix_multiply_kji(A, B, result, A_row_size, B_col_size, B_row_size);
         end_time = clock(); 
+    } else {
+        handle_error("Invalid variation.", MISC_ERROR);
     }
+
     time_taken = ((double)end_time - (double)start_time) / CLOCKS_PER_SEC * 1000;
     if (compare_matrices(result, C, A_row_size, B_col_size)) {
         printf("Passed!,  %.3f ms\n", time_taken);

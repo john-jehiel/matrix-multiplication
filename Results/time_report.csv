@@ -1,148 +1,176 @@
-Test_No, Unit_Id, Variation, Status, Time_Taken(ms)
+Test_No, Unit_Id, Variation, Status, Time_Taken(ms), Remarks
 1, 1, ijk, Passed!,  0.000 ms
 2, 1, ikj, Passed!,  0.000 ms
-3, 1, jik, Passed!,  0.000 ms
-4, 1, jki, Passed!,  0.000 ms
-5, 1, kij, Passed!,  4.000 ms
-6, 1, kji, Passed!,  6.000 ms
+3, 1, jik, Passed!,  7.000 ms
+4, 1, jki, Passed!,  7.000 ms
+5, 1, kij, Passed!,  0.000 ms
+6, 1, kji, Passed!,  0.000 ms
 
-7, 10, ijk, Passed!,  145.000 ms
+7, 10, ijk, Passed!,  165.000 ms
 8, 10, ikj, Passed!,  141.000 ms
-9, 10, jik, Passed!,  148.000 ms
-10, 10, jki, Passed!,  126.000 ms
-11, 10, kij, Passed!,  95.000 ms
-12, 10, kji, Passed!,  78.000 ms
+9, 10, jik, Passed!,  141.000 ms
+10, 10, jki, Passed!,  140.000 ms
+11, 10, kij, Passed!,  141.000 ms
+12, 10, kji, Passed!,  157.000 ms
 
-13, 11, ijk, Passed!,  79.000 ms
-14, 11, ikj, Passed!,  100.000 ms
-15, 11, jik, Passed!,  94.000 ms
-16, 11, jki, Passed!,  102.000 ms
-17, 11, kij, Passed!,  97.000 ms
-18, 11, kji, Passed!,  94.000 ms
+13, 11, ijk, Passed!,  173.000 ms
+14, 11, ikj, Passed!,  194.000 ms
+15, 11, jik, Passed!,  157.000 ms
+16, 11, jki, Passed!,  185.000 ms
+17, 11, kij, Passed!,  173.000 ms
+18, 11, kji, Passed!,  172.000 ms
 
-19, 12, ijk, Passed!,  112.000 ms
-20, 12, ikj, Passed!,  126.000 ms
-21, 12, jik, Passed!,  110.000 ms
-22, 12, jki, Passed!,  110.000 ms
-23, 12, kij, Passed!,  110.000 ms
-24, 12, kji, Passed!,  128.000 ms
+19, 12, ijk, Passed!,  219.000 ms
+20, 12, ikj, Passed!,  230.000 ms
+21, 12, jik, Passed!,  210.000 ms
+22, 12, jki, Passed!,  239.000 ms
+23, 12, kij, Passed!,  223.000 ms
+24, 12, kji, Passed!,  224.000 ms
 
-25, 13, ijk, Passed!,  141.000 ms
-26, 13, ikj, Passed!,  131.000 ms
-27, 13, jik, Passed!,  142.000 ms
-28, 13, jki, Passed!,  125.000 ms
-29, 13, kij, Passed!,  126.000 ms
-30, 13, kji, Passed!,  141.000 ms
+25, 13, ijk, Passed!,  278.000 ms
+26, 13, ikj, Passed!,  262.000 ms
+27, 13, jik, Passed!,  291.000 ms
+28, 13, jki, Passed!,  265.000 ms
+29, 13, kij, Passed!,  269.000 ms
+30, 13, kji, Passed!,  276.000 ms
 
-31, 14, ijk, Passed!,  157.000 ms
-32, 14, ikj, Passed!,  156.000 ms
-33, 14, jik, Passed!,  158.000 ms
-34, 14, jki, Passed!,  173.000 ms
-35, 14, kij, Passed!,  173.000 ms
-36, 14, kji, Passed!,  160.000 ms
+31, 14, ijk, Passed!,  327.000 ms
+32, 14, ikj, Passed!,  315.000 ms
+33, 14, jik, Passed!,  308.000 ms
+34, 14, jki, Passed!,  440.000 ms
+35, 14, kij, Passed!,  315.000 ms
+36, 14, kji, Passed!,  320.000 ms
 
-37, 15, ijk, Passed!,  181.000 ms
-38, 15, ikj, Passed!,  188.000 ms
-39, 15, jik, Passed!,  204.000 ms
-40, 15, jki, Passed!,  188.000 ms
-41, 15, kij, Passed!,  186.000 ms
-42, 15, kji, Passed!,  188.000 ms
+37, 15, ijk, Passed!,  426.000 ms
+38, 15, ikj, Passed!,  387.000 ms
+39, 15, jik, Passed!,  339.000 ms
+40, 15, jki, Passed!,  386.000 ms
+41, 15, kij, Passed!,  381.000 ms
+42, 15, kji, Passed!,  411.000 ms
 
-43, 16, ijk, Passed!,  219.000 ms
-44, 16, ikj, Passed!,  220.000 ms
-45, 16, jik, Passed!,  236.000 ms
-46, 16, jki, Passed!,  228.000 ms
-47, 16, kij, Passed!,  227.000 ms
-48, 16, kji, Passed!,  235.000 ms
+43, 16, ijk, Passed!,  446.000 ms
+44, 16, ikj, Passed!,  442.000 ms
+45, 16, jik, Passed!,  419.000 ms
+46, 16, jki, Passed!,  513.000 ms
+47, 16, kij, Passed!,  435.000 ms
+48, 16, kji, Passed!,  500.000 ms
 
-49, 17, ijk, Passed!,  251.000 ms
-50, 17, ikj, Passed!,  267.000 ms
-51, 17, jik, Passed!,  252.000 ms
-52, 17, jki, Passed!,  297.000 ms
-53, 17, kij, Passed!,  266.000 ms
-54, 17, kji, Passed!,  268.000 ms
+49, 17, ijk, Passed!,  524.000 ms
+50, 17, ikj, Passed!,  509.000 ms
+51, 17, jik, Passed!,  489.000 ms
+52, 17, jki, Passed!,  541.000 ms
+53, 17, kij, Passed!,  519.000 ms
+54, 17, kji, Passed!,  515.000 ms
 
-55, 18, ijk, Passed!,  299.000 ms
-56, 18, ikj, Passed!,  298.000 ms
-57, 18, jik, Passed!,  275.000 ms
-58, 18, jki, Passed!,  298.000 ms
-59, 18, kij, Passed!,  313.000 ms
-60, 18, kji, Passed!,  299.000 ms
+55, 18, ijk, Passed!,  571.000 ms
+56, 18, ikj, Passed!,  595.000 ms
+57, 18, jik, Passed!,  554.000 ms
+58, 18, jki, Passed!,  648.000 ms
+59, 18, kij, Passed!,  582.000 ms
+60, 18, kji, Passed!,  591.000 ms
 
-61, 19, ijk, Passed!,  343.000 ms
-62, 19, ikj, Passed!,  345.000 ms
-63, 19, jik, Passed!,  314.000 ms
-64, 19, jki, Passed!,  330.000 ms
-65, 19, kij, Passed!,  339.000 ms
-66, 19, kji, Passed!,  346.000 ms
+61, 19, ijk, Passed!,  660.000 ms
+62, 19, ikj, Passed!,  643.000 ms
+63, 19, jik, Passed!,  648.000 ms
+64, 19, jki, Passed!,  611.000 ms
+65, 19, kij, Passed!,  646.000 ms
+66, 19, kji, Passed!,  639.000 ms
 
-67, 2, ijk, Passed!,  0.000 ms
-68, 2, ikj, Passed!,  6.000 ms
-69, 2, jik, Passed!,  8.000 ms
-70, 2, jki, Passed!,  15.000 ms
-71, 2, kij, Passed!,  0.000 ms
+67, 2, ijk, Passed!,  13.000 ms
+68, 2, ikj, Passed!,  16.000 ms
+69, 2, jik, Passed!,  16.000 ms
+70, 2, jki, Passed!,  16.000 ms
+71, 2, kij, Passed!,  16.000 ms
 72, 2, kji, Passed!,  15.000 ms
 
-73, 20, ijk, Passed!,  381.000 ms
-74, 20, ikj, Passed!,  392.000 ms
-75, 20, jik, Passed!,  372.000 ms
-76, 20, jki, Passed!,  383.000 ms
-77, 20, kij, Passed!,  400.000 ms
-78, 20, kji, Passed!,  376.000 ms
+73, 20, ijk, Passed!,  776.000 ms
+74, 20, ikj, Passed!,  727.000 ms
+75, 20, jik, Passed!,  728.000 ms
+76, 20, jki, Passed!,  792.000 ms
+77, 20, kij, Passed!,  753.000 ms
+78, 20, kji, Passed!,  709.000 ms
 
-79, 21, ijk, Passed!,  1224.000 ms
-80, 21, ikj, Passed!,  1187.000 ms
-81, 21, jik, Passed!,  1222.000 ms
-82, 21, jki, Passed!,  1302.000 ms
-83, 21, kij, Passed!,  1239.000 ms
-84, 21, kji, Passed!,  1318.000 ms
+79, 21, ijk, Passed!,  2412.000 ms
+80, 21, ikj, Passed!,  2255.000 ms
+81, 21, jik, Passed!,  2300.000 ms
+82, 21, jki, Passed!,  2531.000 ms
+83, 21, kij, Passed!,  2266.000 ms
+84, 21, kji, Passed!,  2476.000 ms
 
-85, 3, ijk, Passed!,  15.000 ms
-86, 3, ikj, Passed!,  0.000 ms
-87, 3, jik, Passed!,  0.000 ms
-88, 3, jki, Passed!,  0.000 ms
-89, 3, kij, Passed!,  16.000 ms
-90, 3, kji, Passed!,  0.000 ms
+85, 22, ijk, Passed!, , Matrix dimensions are incompatible for multiplication.
+86, 22, ikj, Passed!, , Matrix dimensions are incompatible for multiplication.
+87, 22, jik, Passed!, , Matrix dimensions are incompatible for multiplication.
+88, 22, jki, Passed!, , Matrix dimensions are incompatible for multiplication.
+89, 22, kij, Passed!, , Matrix dimensions are incompatible for multiplication.
+90, 22, kji, Passed!, , Matrix dimensions are incompatible for multiplication.
 
-91, 4, ijk, Passed!,  9.000 ms
-92, 4, ikj, Passed!,  16.000 ms
-93, 4, jik, Passed!,  16.000 ms
-94, 4, jki, Passed!,  15.000 ms
-95, 4, kij, Passed!,  12.000 ms
-96, 4, kji, Passed!,  19.000 ms
+91, 23, ijk, Passed!, , Matrix dimensions are missing or invalid.
+92, 23, ikj, Passed!, , Matrix dimensions are missing or invalid.
+93, 23, jik, Passed!, , Matrix dimensions are missing or invalid.
+94, 23, jki, Passed!, , Matrix dimensions are missing or invalid.
+95, 23, kij, Passed!, , Matrix dimensions are missing or invalid.
+96, 23, kji, Passed!, , Matrix dimensions are missing or invalid.
 
-97, 5, ijk, Passed!,  15.000 ms
-98, 5, ikj, Passed!,  32.000 ms
-99, 5, jik, Passed!,  31.000 ms
-100, 5, jki, Passed!,  31.000 ms
-101, 5, kij, Passed!,  31.000 ms
-102, 5, kji, Passed!,  31.000 ms
+97, 24, ijk, Passed!, , Matrix dimensions must be positive integers.
+98, 24, ikj, Passed!, , Matrix dimensions must be positive integers.
+99, 24, jik, Passed!, , Matrix dimensions must be positive integers.
+100, 24, jki, Passed!, , Matrix dimensions must be positive integers.
+101, 24, kij, Passed!, , Matrix dimensions must be positive integers.
+102, 24, kji, Passed!, , Matrix dimensions must be positive integers.
 
-103, 6, ijk, Passed!,  31.000 ms
-104, 6, ikj, Passed!,  15.000 ms
-105, 6, jik, Passed!,  16.000 ms
-106, 6, jki, Passed!,  31.000 ms
-107, 6, kij, Passed!,  31.000 ms
-108, 6, kji, Passed!,  15.000 ms
+103, 25, ijk, Passed!, , Matrix contains missing or invalid values.
+104, 25, ikj, Passed!, , Matrix contains missing or invalid values.
+105, 25, jik, Passed!, , Matrix contains missing or invalid values.
+106, 25, jki, Passed!, , Matrix contains missing or invalid values.
+107, 25, kij, Passed!, , Matrix contains missing or invalid values.
+108, 25, kji, Passed!, , Matrix contains missing or invalid values.
 
-109, 7, ijk, Passed!,  32.000 ms
-110, 7, ikj, Passed!,  47.000 ms
-111, 7, jik, Passed!,  47.000 ms
-112, 7, jki, Passed!,  31.000 ms
-113, 7, kij, Passed!,  31.000 ms
-114, 7, kji, Passed!,  43.000 ms
+109, 3, ijk, Passed!,  21.000 ms
+110, 3, ikj, Passed!,  22.000 ms
+111, 3, jik, Passed!,  16.000 ms
+112, 3, jki, Passed!,  16.000 ms
+113, 3, kij, Passed!,  9.000 ms
+114, 3, kji, Passed!,  15.000 ms
 
-115, 8, ijk, Passed!,  47.000 ms
-116, 8, ikj, Passed!,  47.000 ms
-117, 8, jik, Passed!,  63.000 ms
-118, 8, jki, Passed!,  48.000 ms
-119, 8, kij, Passed!,  65.000 ms
-120, 8, kji, Passed!,  47.000 ms
+115, 4, ijk, Passed!,  28.000 ms
+116, 4, ikj, Passed!,  28.000 ms
+117, 4, jik, Passed!,  31.000 ms
+118, 4, jki, Passed!,  31.000 ms
+119, 4, kij, Passed!,  33.000 ms
+120, 4, kji, Passed!,  16.000 ms
 
-121, 9, ijk, Passed!,  61.000 ms
-122, 9, ikj, Passed!,  63.000 ms
-123, 9, jik, Passed!,  62.000 ms
-124, 9, jki, Passed!,  62.000 ms
-125, 9, kij, Passed!,  62.000 ms
-126, 9, kji, Passed!,  63.000 ms
+121, 5, ijk, Passed!,  42.000 ms
+122, 5, ikj, Passed!,  34.000 ms
+123, 5, jik, Passed!,  35.000 ms
+124, 5, jki, Passed!,  37.000 ms
+125, 5, kij, Passed!,  35.000 ms
+126, 5, kji, Passed!,  51.000 ms
+
+127, 6, ijk, Passed!,  49.000 ms
+128, 6, ikj, Passed!,  55.000 ms
+129, 6, jik, Passed!,  47.000 ms
+130, 6, jki, Passed!,  63.000 ms
+131, 6, kij, Passed!,  48.000 ms
+132, 6, kji, Passed!,  40.000 ms
+
+133, 7, ijk, Passed!,  63.000 ms
+134, 7, ikj, Passed!,  79.000 ms
+135, 7, jik, Passed!,  84.000 ms
+136, 7, jki, Passed!,  79.000 ms
+137, 7, kij, Passed!,  63.000 ms
+138, 7, kji, Passed!,  70.000 ms
+
+139, 8, ijk, Passed!,  110.000 ms
+140, 8, ikj, Passed!,  101.000 ms
+141, 8, jik, Passed!,  103.000 ms
+142, 8, jki, Passed!,  113.000 ms
+143, 8, kij, Passed!,  100.000 ms
+144, 8, kji, Passed!,  111.000 ms
+
+145, 9, ijk, Passed!,  110.000 ms
+146, 9, ikj, Passed!,  125.000 ms
+147, 9, jik, Passed!,  115.000 ms
+148, 9, jki, Passed!,  140.000 ms
+149, 9, kij, Passed!,  135.000 ms
+150, 9, kji, Passed!,  125.000 ms
 
