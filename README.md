@@ -62,6 +62,7 @@ This repository provides a framework for matrix multiplication using different l
    ```
 2. Install dependencies:
    - GCC (for compiling C programs)
+   - make (for build automation)
 
 ### Running Tests
 1. Compile the driver program: (either via **gcc** or **make**)
