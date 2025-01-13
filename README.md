@@ -11,19 +11,13 @@
 - [Performance Benchmarking](#performance-benchmarking)
 - [Contributing](#contributing)
 
----
-
 ## Overview
 This repository provides a framework for matrix multiplication using different loop orders and evaluates their performance using custom test cases. The main goal is to compare the efficiency of different loop orders under varying conditions.
-
----
 
 ## Features
 - **Multiple Variations**: Supports `ijk`, `ikj`, `jik`, `jki`, `kij`, and `kji` loop orders.
 - **Performance Reporting**: Time taken for each variation is recorded and logged.
 - **Unit testing**: Verifies the correctness of the matrix multiplication results against expected outputs.
-
----
 
 ## Directory Structure
 ```
@@ -31,6 +25,7 @@ This repository provides a framework for matrix multiplication using different l
 ├── driver.c
 ├── matmul.c
 ├── run_tests.sh
+├── Makefile
 ├── Results
 │   └── time_report.csv
 ├── Unit_test         
@@ -41,7 +36,6 @@ This repository provides a framework for matrix multiplication using different l
 │   └── ...
 └── .gitignore
 ```
----
 
 ## File Descriptions
 
@@ -51,13 +45,12 @@ This repository provides a framework for matrix multiplication using different l
 - **Results/**: Directory to store test results.
   - **time_report.csv**: CSV file containing the results of the tests.
 - **run_tests.sh**: Shell script to compile the driver, run tests, and record results.
+- **Makefile**: Build automation file to compile driver code
 - **Unit_test/**: Directory containing test cases.
   - **unit_X/**: Subdirectories for each test case, where `X` is the unit number.
     - **A.txt**: Matrix A.
     - **B.txt**: Matrix B.
     - **C.txt**: Matrix C (result of A * B).
-
----
 
 ## Usage 
 
@@ -71,17 +64,20 @@ This repository provides a framework for matrix multiplication using different l
    - GCC (for compiling C programs)
 
 ### Running Tests
-1. Compile the driver program:
-   ```bash
-   gcc -o driver driver.c
-   ```
+1. Compile the driver program: (either via **gcc** or **make**)
+   - **gcc**
+      ```bash
+      gcc -o driver driver.c
+      ```
+   - **make**
+      ```bash
+      mingw32-make
+      ```
 2. Execute the `run_tests.sh` script:
    ```bash
    bash run_tests.sh
    ```
 3. View the results in `Results/time_report.csv`.
-
----
 
 ## Performance Benchmarking
 The `run_tests.sh` script records performance metrics for each test case:
@@ -90,10 +86,9 @@ The `run_tests.sh` script records performance metrics for each test case:
 - **Variation**: The variation of the matrix multiplication algorithm.
 - **Status**: The status of the test (Passed or Failed).
 - **Time_Taken(ms)**: The time taken to perform the matrix multiplication in milliseconds.
+- **Remarks**: reason for the failure of unit test
 
 Results are saved in `Results/time_report.csv`.
-
----
 
 ## Contributing
 Contributions are highly encouraged! Follow these steps to contribute:
