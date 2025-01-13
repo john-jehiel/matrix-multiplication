@@ -2,9 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <math.h>
 #include <sys/stat.h>
 #include "matmul.c"
 #define MISC_ERROR 2
+#define EPSILON 0.01
 
 //check if file is empty
 int is_file_empty(const char *filename) {
@@ -41,7 +43,7 @@ void handle_error(const char *error_message, int expected_status) {
 }
 
 // read matrix from file
-void read_matrix(const char *filename, int ***matrix, int *rows, int *cols, int expected_status) {
+void read_matrix(const char *filename, float ***matrix, int *rows, int *cols, int expected_status) {
     FILE *file = fopen(filename, "r");
     if (!file) {
         handle_error("File not found.", MISC_ERROR);
@@ -52,7 +54,7 @@ void read_matrix(const char *filename, int ***matrix, int *rows, int *cols, int 
     if (*rows <= 0 || *cols <= 0) {
         handle_error("Matrix dimensions must be positive integers.", expected_status);
     }
-    *matrix = malloc((*rows) * sizeof(int *));
+    *matrix = malloc((*rows) * sizeof(float *));
     // Check if memory allocation was successful
     if (*matrix == NULL) {
         handle_error("Memory allocation failed for matrix rows.", MISC_ERROR);
@@ -60,7 +62,7 @@ void read_matrix(const char *filename, int ***matrix, int *rows, int *cols, int 
         return;
     }
     for (int i = 0; i < *rows; i++) {
-        (*matrix)[i] = malloc((*cols) * sizeof(int));
+        (*matrix)[i] = malloc((*cols) * sizeof(float));
         if ((*matrix)[i] == NULL) {
             handle_error("Memory allocation failed for matrix columns.", MISC_ERROR);
             fclose(file);
@@ -73,7 +75,7 @@ void read_matrix(const char *filename, int ***matrix, int *rows, int *cols, int 
             return;
         }
         for (int j = 0; j < *cols; j++) {
-            if (fscanf(file, "%d", &((*matrix)[i][j])) != 1) {
+            if (fscanf(file, "%f", &((*matrix)[i][j])) != 1) {
                 handle_error("Matrix contains missing or invalid values.", expected_status);
             }
         }
@@ -82,10 +84,13 @@ void read_matrix(const char *filename, int ***matrix, int *rows, int *cols, int 
 }
 
 // compare two matrices
-int compare_matrices(int **matrix_1, int **matrix_2, int rows, int cols) {
+int compare_matrices(float **matrix_1, float **matrix_2, int rows, int cols) {
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
-            if (matrix_1[i][j] != matrix_2[i][j]) {
+            if (fabs(matrix_1[i][j] - matrix_2[i][j]) > EPSILON) {
+                char error_message[256];
+                sprintf(error_message, "Mismatch at (%d, %d): %f != %f", i, j, matrix_1[i][j], matrix_2[i][j]);
+                handle_error(error_message, MISC_ERROR);
                 return 0;
             }
         }
@@ -101,7 +106,7 @@ int main(int argc, char *argv[]) {
     }
     
     int A_row_size, A_col_size, B_row_size, B_col_size, C_row_size, C_col_size;
-    int **A, **B, **C, **result;
+    float **A, **B, **C, **result;
     char filepath[256];
 
     // Read expected status from file C.txt
@@ -128,7 +133,7 @@ int main(int argc, char *argv[]) {
     }
 
     // Allocate memory for the result matrix and initialize it to 0
-    result = calloc(A_row_size, sizeof(int *));
+    result = calloc(A_row_size, sizeof(float *));
 
     // Check if memory allocation was successful
     if (result == NULL) {
